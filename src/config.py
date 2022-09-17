@@ -202,7 +202,7 @@ class WorldData:
     def __post_init__(self):
         self.bg_path = ASSET_DIR / "backgrounds" / f"level_{self.level_id}.png"
 
-        with open(DATA_DIR / "levels" / f"{self.level_id}.csv", newline="") as csvfile:
+        with open(DATA_DIR / "levels" / f"{self.level_id}.csv", encoding="utf-8-sig", newline="") as csvfile:
             reader = csv.reader(csvfile, delimiter=",")
             self.data = [
                 [EntityType(int(tile or EntityType.EMPTY.value)) for tile in row] for row in reader
